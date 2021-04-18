@@ -15,4 +15,19 @@ use App\Http\Controllers\CalendarController;
 */
 
 //カレンダー画面を表示
-Route::get('/', [CalendarController::class, 'showCalendar']);
+Route::get('/', [CalendarController::class, 'showCalendar']) -> name('showCalendar');
+
+//スケジュール登録フォームを表示
+Route::get('/insert', [CalendarController::class, 'insertForm']) -> name('insertForm');
+//スケジュール登録処理
+Route::post('/insert/process', [CalendarController::class, 'insertProcess']) -> name('insertProcess');
+
+//スケジュール更新フォームを表示
+Route::get('/update/{id}', [CalendarController::class, 'updateForm']) -> name('updateForm');
+//スケジュール更新処理
+Route::post('/update/process', [CalendarController::class, 'updateProcess']) -> name('updateProcess');
+
+//スケジュール削除確認画面を表示
+Route::get('/delete/{id}', [CalendarController::class, 'deleteForm']) -> name('deleteForm');
+//スケジュール削除処理
+Route::post('/delete/process', [CalendarController::class, 'deleteProcess']) -> name('deleteProcess');

@@ -9,6 +9,30 @@ width: 100%
 	background-color: #f5f6ce;
 }
 
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.flash_message {
+	animation-name: fade-out;
+	animation-duration: 5s;
+	animation-fill-mode: forwards;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	border: 1px solid #999999;
+	z-index: 10;
+	padding: 10px;
+	font-size: 40px;
+	background-color: white;
+	
+}
+
 .schedule-view {
 	float: left;
 	display: inline-block;
@@ -68,12 +92,9 @@ width: 100%
 	text-align: right;
 }
 
-.schedule-button input {
+.schedule-button a {
 	width: 90px;
-}
-
-.ui-dialog {
-	width:500px;
+	padding: 5px
 }
 
 .calendar-view {
@@ -85,25 +106,23 @@ width: 100%
 	position: relative;
 }
 
-.month-view {
+.calendar-view-header {
 	top: 20px;
 	left: 50px;
+	width:90%;
 	position: absolute;
 }
 
-.login {
-	top: 20px;
-	right: 130px;
-	position: absolute;
+.month-view {
+	display: inline-block;
 }
 
-.registration {
-	top: 20px;
-	right: 30px;
-	position: absolute;
+.insert-schedule-button {
+	float: right;
+	display: inline-block;
 }
 
-table {
+.calendar-table {
 	border-collapse: collapse;
 	position: absolute;
 	top: 60px;
@@ -150,4 +169,30 @@ td {
 
 #date {
 	background-color: #b8b8b8;
+}
+
+.button-area {
+	margin-top: 10px;
+}
+
+.active-button {
+	padding: 2px;
+	font-size: 15px;
+	border-radius: 5%;
+	background-color: #81bef7;
+	border :2px solid #81bef7;
+}
+
+.gray-button {
+	padding: 2px;
+	font-size: 15px;
+	border-radius: 5%;
+	color: black;
+	background-color: #999999;
+	border :2px solid #999999;
+	text-decoration: none;
+}
+
+.gray-button:active {
+	border :2px solid black;
 }

@@ -13,10 +13,13 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-    	if (Schema::hasTable('schedules')) {
+    	if (!Schema::hasTable('schedules')) {
         	Schema::create('schedules', function (Blueprint $table) {
-            	$table->id();
-            	$table->timestamps();
+            	$table->increments('No');
+            	$table->date('date');
+            	$table->time('start');
+            	$table->time('end');
+            	$table->string('schedule', 300);
         	});
         }
     }

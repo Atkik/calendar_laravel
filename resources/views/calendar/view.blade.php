@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<title>カレンダー</title>
 		<link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
 		
@@ -11,6 +12,11 @@
 	</head>
 	
 	<body>
+		@if (session('flash_message'))
+            <div class="flash_message">
+                {{ session('flash_message') }}
+            </div>
+        @endif
 		<div class="top-wrapper">
 			<div class="schedule-view">
 				<span>スケジュール</span>
@@ -18,7 +24,10 @@
 				</div>
 			</div>
 			<div class="calendar-view">
-				<div class="month-view">
+				<div class="calendar-view-header">
+					<div class="month-view">
+					</div>
+					<input class="insert-schedule-button" type="submit" value="スケジュール新規登録" onclick="location.href='./insert'">
 				</div>
 				<table border="1" class="calendar-table">
 					<tr>
@@ -34,5 +43,9 @@
 			</div>
 		</div>
 	</body>
+	
+	<script>
+		var schedules = @json($schedules);
+	</script>
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </html>	
