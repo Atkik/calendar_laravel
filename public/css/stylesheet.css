@@ -33,10 +33,41 @@ width: 100%
 	
 }
 
+.top-header {
+	height: 5%;
+	width: 97.5%;
+	display: flex;
+	align-items: center;
+	background-color: #f4c6c6;
+}
+
+.top-header img {
+	height: 90%;
+	width: 4%;
+}
+
+.top-header span {
+	margin-left: 3px;
+	font-weight: 900;
+	color: #2ea1d6;
+}
+
+.top-header-button {
+	margin-left: auto;
+}
+
+.top-header-button a {
+	margin-left: 5px;
+	padding: 3px 10px;
+	border: #c3c3c3;
+	border-radius: 5px;
+	background-color: #c3c3c3;
+}
+
 .schedule-view {
 	float: left;
 	display: inline-block;
-	height: 100%;
+	height: 95%;
 	width: 29.5%;
 	border: 1px solid #a4a4a4;
 	background-color: white;
@@ -44,7 +75,6 @@ width: 100%
 
 .schedule-view-main {
 	height: 97%;
-	border: 1px solid #a4a4a4;
 	background-color: #b8b8b8;
 }
 
@@ -100,7 +130,7 @@ width: 100%
 .calendar-view {
 	float: right;
 	display: inline-block;
-	height: 100%;
+	height: 95%;
 	width: 70%;
 	border: 1px solid #a4a4a4;
 	position: relative;

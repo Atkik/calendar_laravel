@@ -18,8 +18,15 @@
             </div>
         @endif
 		<div class="top-wrapper">
+			<div class="top-header">
+				<img src="{{ asset('image/calenderIcon.png') }}">
+				<span>カレンダーアプリ</span>
+				<div class="top-header-button">
+					<a href="{{route('login')}}">ログイン</a>
+					<a href="{{route('registration')}}">ユーザ登録</a>
+				</div>
+			</div>
 			<div class="schedule-view">
-				<span>スケジュール</span>
 				<div class="schedule-view-main">
 				</div>
 			</div>

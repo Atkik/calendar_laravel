@@ -17,6 +17,15 @@ use App\Http\Controllers\CalendarController;
 //カレンダー画面を表示
 Route::get('/', [CalendarController::class, 'showCalendar']) -> name('showCalendar');
 
+//ログイン画面を表示
+Route::get('/login', [UserController::class, 'login']) -> name('login');
+
+//ログアウト画面を表示
+Route::get('/logout', [UserController::class, 'logout']) -> name('logout');
+
+//ユーザ登録画面を表示
+Route::get('/registration', [UserController::class, 'registration']) -> name('registration');
+
 //スケジュール登録フォームを表示
 Route::get('/insert', [CalendarController::class, 'insertForm']) -> name('insertForm');
 //スケジュール登録処理
