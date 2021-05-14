@@ -88,7 +88,7 @@ class CalendarController extends Controller
     {
 		//ログインユーザ名を取得
 		if(Auth::user() == null){
-			$userID = null;
+			$userID = 'guest';
 		} else {
 			$userID = Auth::user()->userID;
 		}

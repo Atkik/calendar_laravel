@@ -26,10 +26,9 @@ function showSchedule(date) {
 	$(".schedule-view-main").append('<div id="schedule-date">' + showDate + '</div>');
 	
 	$(".schedule-view-main").append('<div class="schedule-space"></div>');
-	
 	//スケジュール一覧を表示
 	for(var i = 0; i < schedules.length; i++) {
-		if(schedules[i]["date"] == dbDate){
+		if(schedules[i]["date"] == dbDate && schedules[i]["userID"] == userID){
 			$(".schedule-space").append(
 				'<div class="accordion-trigger">'+
 					'<div class="accordion-mark">▶ </div>'+

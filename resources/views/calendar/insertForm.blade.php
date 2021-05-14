@@ -18,6 +18,9 @@
 			'<input type="time" name="end">
 			<p>スケジュール内容を入力してください</p>
 			<textarea cols="50" rows="5" name="schedule"></textarea>
+
+			<input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
+
 			<div class="button-area">
 				<button class="active-button" type="submit">登録</button>
 				<a class="gray-button" href="{{route('showCalendar')}}">キャンセル</a>
