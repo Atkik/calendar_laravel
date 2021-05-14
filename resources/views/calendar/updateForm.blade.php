@@ -21,8 +21,8 @@
 			<p>スケジュール内容を入力してください</p>
 			<textarea cols="50" rows="5" name="schedule">{{ $schedule->schedule }}</textarea>
 
-			<input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
-			
+			<input type="hidden" name="userID" value={{ $userID }}>
+
 			<div class="form-button">
 				<button class="form-next" type="submit">更新</button>
 				<a class="form-cancel" href="{{route('showCalendar')}}">キャンセル</a>

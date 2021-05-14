@@ -11,7 +11,14 @@ class CalendarController extends Controller
     //スケジュール登録フォームを表示
     public function insertForm()
     {
-    	return view('calendar.insertForm');
+		//ログインユーザ名を取得
+		if(Auth::user() == null){
+			$userID = 'guest';
+		} else {
+			$userID = Auth::user()->userID;
+		}
+
+    	return view('calendar.insertForm', ['userID' => $userID]);
     }
     
     //スケジュール登録処理
@@ -36,7 +43,15 @@ class CalendarController extends Controller
     		\Session::flash('flash_message', 'データがありません');
     		return redirect(route('showCalendar'));
     	}
-    	return view('calendar.updateForm', ['schedule' => $schedule]);
+
+		//ログインユーザ名を取得
+		if(Auth::user() == null){
+			$userID = 'guest';
+		} else {
+			$userID = Auth::user()->userID;
+		}
+
+    	return view('calendar.updateForm', ['schedule' => $schedule, 'userID' => $userID]);
     }
     
     //スケジュール更新処理
