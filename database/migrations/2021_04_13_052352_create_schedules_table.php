@@ -15,11 +15,12 @@ class CreateSchedulesTable extends Migration
     {
     	if (!Schema::hasTable('schedules')) {
         	Schema::create('schedules', function (Blueprint $table) {
-            	$table->increments('No');
+            	$table->increments('No')->unique();
             	$table->date('date');
             	$table->time('start');
             	$table->time('end');
             	$table->string('schedule', 300);
+                $table->string('userID', 20);
         	});
         }
     }

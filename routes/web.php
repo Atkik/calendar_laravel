@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,16 @@ Route::get('/', [CalendarController::class, 'showCalendar']) -> name('showCalend
 
 //ログイン画面を表示
 Route::get('/login', [UserController::class, 'login']) -> name('login');
+//ログイン処理
+Route::post('/login/process', [UserController::class, 'loginProcess']) -> name('loginProcess');
 
-//ログアウト画面を表示
+//ログアウト処理
 Route::get('/logout', [UserController::class, 'logout']) -> name('logout');
 
 //ユーザ登録画面を表示
 Route::get('/registration', [UserController::class, 'registration']) -> name('registration');
+//ユーザ登録処理
+Route::post('/registration/process', [UserController::class, 'registrationProcess']) -> name('registrationProcess');
 
 //スケジュール登録フォームを表示
 Route::get('/insert', [CalendarController::class, 'insertForm']) -> name('insertForm');

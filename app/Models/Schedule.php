@@ -17,7 +17,8 @@ class schedule extends Model
     	'date',
     	'start',
     	'end',
-    	'schedule'
+    	'schedule',
+        'userID'
     ];
     
     public $timestamps = false;

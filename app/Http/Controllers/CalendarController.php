@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Schedule;
 
 class CalendarController extends Controller
@@ -19,7 +20,7 @@ class CalendarController extends Controller
     	//スケジュール登録
     	Schedule::create($request->all());
     	
-    	\Session::flash('flash_message', '登録しました');
+    	\Session::flash('flash_message', 'スケジュールを登録しました');
     	
     	//データを取得
     	$schedules = Schedule::all();
@@ -50,7 +51,7 @@ class CalendarController extends Controller
     	$schedule->schedule = $request->schedule;
     	$schedule->save();
     	
-    	\Session::flash('flash_message', '更新しました');
+    	\Session::flash('flash_message', 'スケジュールを更新しました');
     	
     	//データを取得
     	$schedules = Schedule::all();
@@ -75,7 +76,7 @@ class CalendarController extends Controller
     	//スケジュール削除
     	Schedule::destroy($request->No);
     	
-    	\Session::flash('flash_message', '削除しました');
+    	\Session::flash('flash_message', 'スケジュールを削除しました');
     	
     	//データを取得
     	$schedules = Schedule::all();
@@ -85,9 +86,15 @@ class CalendarController extends Controller
     //カレンダーを表示
     public function showCalendar()
     {
+		//ログインユーザ名を取得
+		if(Auth::user() == null){
+			$userID = null;
+		} else {
+			$userID = Auth::user()->userID;
+		}
     	//データを取得
     	$schedules = Schedule::all();
     	
-    	return view('calendar.view', ['schedules' => $schedules]);
+    	return view('calendar.view', ['schedules' => $schedules, 'userID' => $userID]);
     }
 }

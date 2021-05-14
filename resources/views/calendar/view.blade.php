@@ -17,13 +17,29 @@
                 {{ session('flash_message') }}
             </div>
         @endif
+		@if (session('login_success'))
+            <div class="flash_message">
+				{{ session('login_success') }}
+            </div>
+        @endif
+		@if (session('logout'))
+            <div class="flash_message">
+				{{ session('logout') }}
+            </div>
+        @endif
 		<div class="top-wrapper">
 			<div class="top-header">
 				<img src="{{ asset('image/calenderIcon.png') }}">
 				<span>カレンダーアプリ</span>
 				<div class="top-header-button">
-					<a href="{{route('login')}}">ログイン</a>
-					<a href="{{route('registration')}}">ユーザ登録</a>
+					@auth
+						<span>{{ Auth::user()->userID }}</span>
+						<a href="{{route('logout')}}">ログアウト</a>
+					@endauth
+					@guest
+						<a href="{{route('login')}}">ログイン</a>
+						<a href="{{route('registration')}}">ユーザ登録</a>
+					@endguest
 				</div>
 			</div>
 			<div class="schedule-view">
@@ -53,6 +69,7 @@
 	
 	<script>
 		var schedules = @json($schedules);
+		var userID = @json($userID);
 	</script>
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </html>	
