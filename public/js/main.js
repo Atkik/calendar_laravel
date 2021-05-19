@@ -7,7 +7,8 @@ function viewMonth(year, month) {
 
 //年月変更関数
 function monthCange() {
-	var yM = $("#select-month").value;
+	var yM = $("#select-month").val();
+	viewMonth(yM.slice(0,4), yM.slice(-2));
 	//変更された年月でカレンダー表示
 	viewTable(yM.slice(0,4), yM.slice(-2));
 }
