@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="csrf-token" content="{{ csrf_token() }}">
-		<title>スケジュール更新</title>
-		<link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
-	</head>
 
-	<body>
-		<form action="{{route('deleteProcess')}}" method="post">
-			@csrf
-			<input type="hidden" name="No" value="{{ $schedule->No }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<title>スケジュール削除</title>
+	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
+</head>
+
+<body>
+	<form action="{{route('deleteProcess')}}" method="post">
+		@csrf
+		<input type="hidden" name="No" value="{{ $schedule->No }}">
+
+		<div class="form-group">
+			<p class="form-title">スケジュール削除</p>
+			<br>
 			<table border="1">
 				<tr>
-					<th>日付</th>
-					<th>開始時刻</th>
-					<th>終了時刻</th>
-					<th>内容</th>
+					<td class="td-item">日付</td>
+					<td class="td-content">{{ $schedule->date }}</td>
 				</tr>
 				<tr>
-					<td>{{ $schedule->date }}</td>
-					<td>{{ $schedule->start }}</td>
-					<td>{{ $schedule->end }}</td>
-					<td>{{ $schedule->schedule }}</td>
+					<td class="td-item">開始時刻</td>
+					<td class="td-content">{{ $schedule->start }}</td>
+				</tr>
+				<tr>
+					<td class="td-item">終了時刻</td>
+					<td class="td-content">{{ $schedule->end }}</td>
+				</tr>
+				<tr>
+					<td class="td-item">内容</td>
+					<td class="td-content">{{ $schedule->schedule }}</td>
+				</tr>
 			</table>
 			<br>
 			<p>上記のスケジュールを削除しますか？</p>
-			<div class="form-button">
-				<button class="form-next" type="submit">削除</button>
-				<a class="form-cancel" href="{{route('showCalendar')}}">キャンセル</a>
-			</div>
-		</form>
-	</body>
+		</div>
+		<div class="button-area">
+			<button class="btn btn-primary" type="submit">削除</button>
+			<a class="btn btn-secondary" href="{{route('showCalendar')}}" role="button">キャンセル</a>
+		</div>
+	</form>
+</body>
+
 </html>

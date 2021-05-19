@@ -23,8 +23,14 @@ width: 100%
 	animation-duration: 5s;
 	animation-fill-mode: forwards;
 	position: absolute;
-	top: 30%;
-	left: 50%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	width: 50%;
+	height: 10%;
+	text-align: center;
 	border: 1px solid #999999;
 	z-index: 10;
 	padding: 10px;
@@ -35,7 +41,6 @@ width: 100%
 
 .top-header {
 	height: 5%;
-	width: 97.5%;
 	display: flex;
 	align-items: center;
 	background-color: #f4c6c6;
@@ -59,16 +64,17 @@ width: 100%
 .top-header-button a {
 	margin-left: 5px;
 	padding: 3px 10px;
-	border: #c3c3c3;
-	border-radius: 5px;
-	background-color: #c3c3c3;
+}
+
+.form-title{
+	font-size: 25px;
+	font-weight: bold;
 }
 
 .schedule-view {
-	float: left;
-	display: inline-block;
-	height: 95%;
-	width: 29.5%;
+	height: 100%;
+	width: 100%;
+	padding-right: 0;
 	border: 1px solid #a4a4a4;
 	background-color: white;
 }
@@ -128,10 +134,8 @@ width: 100%
 }
 
 .calendar-view {
-	float: right;
-	display: inline-block;
-	height: 95%;
-	width: 70%;
+	height: 100%;
+	padding-left: 0;
 	border: 1px solid #a4a4a4;
 	position: relative;
 }
@@ -163,7 +167,7 @@ width: 100%
 	border: 2px solid black;
 }
 
-th {
+.calendar-table th {
 	height: 8%;
 	color: black;
 	border: 2px solid black;
@@ -191,7 +195,7 @@ th {
 	background-color: #dba901;
 }
 
-td {
+.calendar-table td {
 	font-size: 30px;
 	color: #0101ddf;
 	vertical-align: top;
@@ -201,28 +205,55 @@ td {
 	background-color: #b8b8b8;
 }
 
+form {
+	margin: 0 30%;
+}
+
+table {
+	width: 100%
+}
+
+.td-item {
+	width: 20%
+}
+
+.td-content {
+	width: 80%
+}
+
 .button-area {
-	margin-top: 10px;
+	float: right;
 }
 
-.active-button {
-	padding: 2px;
-	font-size: 15px;
-	border-radius: 5%;
-	background-color: #81bef7;
-	border :2px solid #81bef7;
+
+
+.container-fluid,
+.row {
+	height: 100%;
+	padding-right: 0;
+	padding-left: 0;
 }
 
-.gray-button {
-	padding: 2px;
-	font-size: 15px;
-	border-radius: 5%;
-	color: black;
-	background-color: #999999;
-	border :2px solid #999999;
-	text-decoration: none;
+.form-group {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: 10% auto 5% auto;
+	width: 100%;
+	height: 10%;
 }
 
-.gray-button:active {
-	border :2px solid black;
+.form-group p{
+	margin-bottom: 0;
+}
+
+
+@media screen and (max-width: 991px) {
+	.schedule-view{
+		height: 50%;
+	}
+	.calendar-view {
+		height: 50%;
+	}
 }
