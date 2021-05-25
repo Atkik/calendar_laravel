@@ -18,9 +18,6 @@ use App\Http\Controllers\UserController;
 //カレンダー画面を表示
 Route::get('/', [CalendarController::class, 'showCalendar']) -> name('showCalendar');
 
-//予定があればカレンダーのセルに☆を表示
-Route::get('/ajax/{date}/{userID}', [CalendarController::class, 'scheduleCheck']) -> name('scheduleCheck');
-
 //ログイン画面を表示
 Route::get('/login', [UserController::class, 'login']) -> name('login');
 //ログイン処理

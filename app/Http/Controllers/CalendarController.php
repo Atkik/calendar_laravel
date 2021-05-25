@@ -112,14 +112,4 @@ class CalendarController extends Controller
     	
     	return view('calendar.view', ['schedules' => $schedules, 'userID' => $userID]);
     }
-
-	//予定があればカレンダーのセルに☆を表示
-    public function scheduleCheck($date, $userID)
-    {
-		$check = Schedule::where('date', $date)->where('userID', $userID)->first();
-    	if(is_null($check)){
-    		return false;
-    	}
-		return $date;
-    }
 }

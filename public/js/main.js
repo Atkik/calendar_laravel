@@ -116,18 +116,12 @@ function viewTable(year, month) {
 				dayCell.innerHTML = '<span>' + dateCount + '</span>';
 
 				//スケジュールが登録されている日付のセルに☆を表示する
-				$.ajax('./ajax/' + date + '/' + userID,
-					{
-						type: 'get',
-						dataType: 'text'
+				for(var k = 0; k < schedules.length; k++) {
+					if(schedules[k]["date"] == date && schedules[k]["userID"] == userID){
+						$("#date-" + date).append('<span style="float:right; color:red">★</span>');
+						break;
 					}
-				).done(function(result){
-					if(result != false){
-						$("#date-" + result).append('<span style="float:right; color:red">★</span>');
-					}
-				}).fail(function(){
-					//console.log("該当日のスケジュールが登録されていません");
-				});
+				}
 				
 				
 				dayCell.onclick = function(){
