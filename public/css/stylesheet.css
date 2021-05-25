@@ -311,4 +311,8 @@ table {
 	.accordion-trigger:hover{
 		font-size: 30px;
 	}
+
+	.schedule-button {
+		font-size: 30px;
+	}
 }
