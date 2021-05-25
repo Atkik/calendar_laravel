@@ -38,7 +38,7 @@ function showSchedule(date) {
 				'<div class="accordion-content">'+
 					'<div class="schedule-content">' + schedules[i]["schedule"] + '</div>'+
 					'<div class="schedule-button">'+
-						//変更/削除ボタンを設置
+						//変更・削除ボタンを設置
 						'<a href=\'./update/' + schedules[i]["No"] + '\'>変更</a>'+
 						'<a href=\'./delete/' + schedules[i]["No"] + '\'>削除</a>'+
 					'</div>'+
@@ -93,25 +93,41 @@ function viewTable(year, month) {
 	var dateCount = 1;
 	
 	//カレンダー表示
-	var j = 0;
-	while(j == 0){
+	var date = "";
+	var i = 1;
+	while(i){
 		var weekRow = $(".calendar-table")[0].insertRow(-1);
-		for(var k = 0; k < 7; k++) {
+		for(var j = 0; j < 7; j++) {
 			var dayCell = weekRow.insertCell(-1);
 			//月初の曜日から月末まで日付を表示する
 			if(begginingWeekDay > monthStartFlug) {
-				//カレンダーセルにdateのIDを設定
-				dayCell.setAttribute("id","date");
+				//月初までのカレンダーセルにdeactive-dateのクラスを設定
+				dayCell.setAttribute("class","deactive-date");
 				monthStartFlug++;
 			} else if(dateCount != (endMonthDate + 1)) {
 				//カレンダーセルにactive-dateクラスとdate_yyyymmddのIDを設定
 				dayCell.setAttribute("class","active-date");
-				dayCell.setAttribute("id","date-" + year + "-" + ("0" + month).slice(-2) + "-" + ("0" + dateCount).slice(-2));
+				date = year + "-" + ("0" + month).slice(-2) + "-" + ("0" + dateCount).slice(-2);
+				dayCell.setAttribute("id","date-" + date);
 				
 				//背景色を白に設定
 				dayCell.style.backgroundColor = "white";
 				//日付を表示
 				dayCell.innerHTML = '<span>' + dateCount + '</span>';
+
+				//スケジュールが登録されている日付のセルに☆を表示する
+				$.ajax('./ajax/' + date + '/' + userID,
+					{
+						type: 'get',
+						dataType: 'text'
+					}
+				).done(function(result){
+					if(result != false){
+						$("#date-" + result).append('<span style="float:right; color:red">★</span>');
+					}
+				}).fail(function(){
+					//console.log("該当日のスケジュールが登録されていません");
+				});
 				
 				
 				dayCell.onclick = function(){
@@ -126,7 +142,7 @@ function viewTable(year, month) {
 						$(".active-date").eq(l).css("background-color" , "white");
 					}
 					
-					//schedule-view-main要素をシンプルな変数に代入
+					//schedule-view-main要素を変数に代入
 					var elemScheView = document.getElementsByClassName("schedule-view-main")[0];
 					//フラグが立っていない場合（セルが白い場合）
 					if(colorFlg == 0){
@@ -151,12 +167,13 @@ function viewTable(year, month) {
 				
 				dateCount++;
 			} else {
-				//カレンダーセルにdateクラスを設定
-				dayCell.setAttribute("id","date");
+				//月末以降のカレンダーセルにdateクラスを設定
+				dayCell.setAttribute("class","deactive-date");
 			}
 		}
+		//月末週でループから抜ける
 		if(dateCount == (endMonthDate + 1)) {
-			j = 1;
+			i = 0;
 		}
 	}
 }

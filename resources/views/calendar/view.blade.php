@@ -67,6 +67,7 @@
 							<th class="saturday">土</th>
 						</tr>
 					</table>
+					<div class="comments">※<span style="color:red">★</span>：予定が登録されている日付</div>
 				</div>
 			</div>
 		</div>

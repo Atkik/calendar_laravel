@@ -15,7 +15,7 @@
 		{{ session('login_error') }}
 	</div>
 	@endif
-	<form action="{{route('loginProcess')}}" method="post">
+	<form action="{{route('loginProcess')}}" method="get">
 		@csrf
 		<div class="form-group">
 			<p class="form-title">ログイン</p>
