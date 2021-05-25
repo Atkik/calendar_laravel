@@ -59,6 +59,7 @@ width: 100%
 
 .top-header-button {
 	margin-left: auto;
+	margin-right: 2%;
 }
 
 .top-header-button a {
@@ -264,5 +265,50 @@ table {
 	}
 	.calendar-view {
 		height: 50%;
+	}
+
+	.top-header img {
+		height: 60px;
+		width: 80px;
+		margin-left: 2%;
+	}
+	
+	.top-header span {
+		font-size: 35px;
+	}
+	
+	.top-header-button a {
+		margin-left: 5px;
+		padding: 4px 10px;
+		width: 170px;
+		height: 50px;
+		font-size: 25px;
+	}
+
+	.calendar-view-header input {
+		width: 260px;
+		height: 60px;
+		font-size: 22px;
+	}
+
+	.calendar-table {
+		top: 12%;
+	}
+
+	.calendar-table td {
+		font-size: 40px;
+	}
+
+	.comments {
+		top: 93%;
+		font-size: 20px;
+	}
+
+	.accordion-trigger {
+		font-size: 30px;
+	}
+
+	.accordion-trigger:hover{
+		font-size: 30px;
 	}
 }
